@@ -1,0 +1,11 @@
+<%= breadcrumb link_to(l(:label_blog_plural), {:controller => 'blogs', :action => 'index', :project_id => @project}) %>
+<div class="box">
+                <h3 class="tags"><%=l(:label_tag_cloud) + ' / ' + l(:label_all)%></h3>
+                <div class="tags">
+                <% tag_cloud Blog.tag_counts(:conditions => ["project_id = ?", @project],
+:order => 'created_on DESC'), %w(css1 css2 css3 css4) do |tag, css_class| %>
+<%= link_to tag.name, { :action => :show_by_tag, :id => tag.name , :project_id => @project}, :class => css_class %><br/>
+                <% end %>
+                </div>
+        </div>
+

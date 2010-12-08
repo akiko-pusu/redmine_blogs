@@ -1,0 +1,9 @@
+# English strings go here
+ja:
+  label_blog_plural: "Blog"
+  label_post_new: 新規post
+  label_users_blogs: ユーザ別ブログ
+  field_tag_list: タグリスト 
+  label_tag_cloud: タグクラウド
+  label_read_more: もっと読む...
+  label_date_tag: *日付指定用

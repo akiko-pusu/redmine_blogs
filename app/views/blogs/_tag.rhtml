@@ -1,0 +1,9 @@
+<div class="box">
+                <h3 class="icon22 icon22-tags"><%=l(:label_tag_cloud)%></h3>
+                <div class="tags">
+                <% tag_cloud Blog.tag_counts(:conditions => ["project_id = ?", @project], :order => 'created_on DESC', :limit => 10), %w(css1 css2 css3 css4) do |tag, css_class| %>
+                                <%= link_to tag.name, { :action => :show_by_tag, :id => tag.name , :project_id => @project}, :class => css_class %>
+                <% end %>
+                </div>
+        </div>
+<%= link_to l(:label_tag_cloud) + ' / ' + l(:label_all) + ' >>', {:action => :show_all_tags, :project_id => @project} %>
