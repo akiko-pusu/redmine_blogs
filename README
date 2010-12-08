@@ -6,6 +6,9 @@ Original Author: KyAnh <xkyanh@gmail.com>
    http://www.redmine.org/boards/3/topics/5782
 
 This code is based on above plugin.
+
+Modified: Akiko Takano <akiko.pusu@gmail.com>
+
 Customise points are following:
 * Modify routing like this: /project/xxxx/blogs/action
 * Move menu from application to project and we can host blogs per project and modify permissions.
