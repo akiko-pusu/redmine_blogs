@@ -13,7 +13,7 @@ class Blog < ActiveRecord::Base
 
   acts_as_searchable :columns => ['title',"#{table_name}.description"], :include => :project
   #acts_as_searchable :columns => ['title', "#{table_name}.description"]
-  acts_as_event :url => Proc.new {|o| {:controller => 'blogs', :action => 'show', :id => o.id}}
+  acts_as_event :url => Proc.new {|o| {:controller => 'blogs', :action => 'show', :id => o.id, :project_id => o.project_id}}
   #acts_as_activity_provider :find_options => {:include => [:author]}
   #acts_as_activity_provider :find_options => {:include => [:author]},
   #                          :author_key => :author_id
