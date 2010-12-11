@@ -30,7 +30,7 @@
 </div>
 <% end %>
 <p><em><% unless @blog.summary.blank? %><%=h @blog.summary %><br /><% end %>
-<span class="author"><%= authoring @blog.created_on, @blog.author %></span></em></p>
+<span class="author"><%= authoring @blog.created_on, @blog.author %> (<%= format_date(@blog.created_on) %>)</span></em></p>
 <div class="tags">
 <% tag_cloud @blog.tag_counts, %w(css1 css2 css3 css4) do |tag, css_class| %>
     <%= link_to tag.name, { :action => :show_by_tag, :id => tag.name, :project_id => @project }, :class => css_class %>

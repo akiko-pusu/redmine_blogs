@@ -68,7 +68,7 @@
 <% @blogs.each do |blog| %>
     <h3><%= link_to h(blog.title), :controller => 'blogs', :action => 'show', :id => blog, :project_id => @project  %>
     <%= "(#{blog.comments_count} #{l(:label_comment, blog.comments_count).downcase})" if blog.comments_count > 0 %></h3>
-    <p class="author"><%= authoring blog.created_on, blog.author %></p>
+    <p class="author"><%= authoring blog.created_on, blog.author %> (<%= format_date(blog.created_on) %>)</p>
     <div class="wiki">
     <%= textilizable(blog, :short_description) %>
 		<%= link_to(l(:label_read_more), { :action => :show, :id => blog.id }) if blog.has_more? %>
