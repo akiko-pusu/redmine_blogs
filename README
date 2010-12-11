@@ -17,3 +17,7 @@ Customise points are following:
 = TODO
 
 * category support
+
+= NOTE
+
+* This plugin should be run under production mode. If not, you will see some Internal Server Error.
