@@ -58,7 +58,8 @@ class BlogsController < ApplicationController
       if request.post?
           @blog.attributes = params[:blog]
           if @blog.save
-              Attachment.attach_files(@blog, params[:attachments])
+              defined?(attach_files) ? attach_files(@blog, params[:attachments]) : Attachment.attach_files(@blog, params[:attachments])
+              #Attachment.attach_files(@blog, params[:attachments])
               flash[:notice] = l(:notice_successful_create)
               # Mailer.deliver_blog_added(@blog) if Setting.notified_events.include?('blog_added')
               redirect_to :controller => 'blogs', :action => "index",:project_id => @project
@@ -70,7 +71,11 @@ class BlogsController < ApplicationController
       find_optional_project
       render_403 if User.current != @blog.author
       if request.post? and @blog.update_attributes(params[:blog])
-          attachments = Attachment.attach_files(@blog, params[:attachments])
+          if defined?(attach_files)
+             attachments = attach_files(@blog, params[:attachments])
+          else 
+             attachments = Attachment.attach_files(@blog, params[:attachments])
+          end      
           flash[:notice] = l(:notice_successful_update)
       end
       redirect_to :controller => 'blogs', :action => "show",:id => @blog, :project_id => @project
