@@ -33,8 +33,15 @@ Redmine::Plugin.register :redmine_blogs do
   #menu :project_menu, :blogs, { :controller => 'blogs', :action => 'index' }, :caption => 'Blogs'
 
 end
+
 Redmine::Activity.map do |activity|
   activity.register :blogs
+end
+
+# Ability to add search providers from plugins 
+# See: http://www.redmine.org/issues/3936
+Redmine::Search.map do |search|
+  search.register :blogs
 end
 
 class RedmineBlogsHookListener < Redmine::Hook::ViewListener
